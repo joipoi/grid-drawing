@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="dropDownContainer">
+    <button id="settings1Btn">Main Buttons</button>
+
+    <div id="settings1Div" class="dropDownDiv">
+      
+    <button id="drawBtn">Draw Memory</button>
+    <button id="resetBtn">Reset Memory</button>
+    <button id="resetBoardBtn">Reset Drawing</button>
+
+  </div>
+  <button id="settings2Btn">Drawing Settings</button>
+
+  <div id="settings2Div" class="dropDownDiv">
+    <label>Width</label>
+    <input value="10" id="widthInput" type="number">
+    <br>
+    <label>Height</label>
+    <input value="10" id="heightInput" type="number">
+    <br>
+    <label>Square Size</label>
+    <input id="sizeInput" value="80" type="number">
+    <br>
+    <label>Pause Drawing Keybind</label>
+    <input id="pauseKeybindInput" type="text" value="A">
+    <br>
+    <label>Static drawing</label>
+    <input id="tempCB" type="checkbox">
+    <br>
+    <label>Hide Square Numbers</label>
+    <input id="showNumsCB" type="checkbox">
+    <br>
+    <label>Hold down mouse to draw</label>
+    <input id="holdDrawCB" type="checkbox">
+   
+  </div>
+
+  <button id="settings3Btn">Pre-defined drawings</button>
+
+  <div id="settings3Div" class="dropDownDiv">
+    <select id="drawingsSelect">
+      <option>Smiley</option>
+      <option>Loop</option>
+    </select>
+    <button id="selectDrawBtn">Draw</button>
+    <label>Current memory name:</label>
+    <input id="currentNameInput" type="text">
+    <button id="addCurrentBtn">Add Current</button>
+  </div>
+
+  </div>
+  <div id="patternStringOutput"></div>
+ 
+    <div id="squareContainer"></div>
+   
+    <script src="script.js"></script>
+</body>
+
+</html>
