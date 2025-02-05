@@ -1,20 +1,22 @@
-//Grid settings
-const transitionTime = 1000;
-let gridWidth = 20;
-let gridHeight = 20;
-let squareSize = 40;
-let showNumbers = false;
-let color1 = 'black';
-let color2 = 'orange';
-let drawSpeed = 50;
+class DrawingController {
+    constructor() {
+        this.transitionTime = 1000;
+        this.gridWidth = 20;
+        this.gridHeight = 20;
+        this.squareSize = 40;
+        this.showNumbers = false;
+        this.color1 = 'black';
+        this.color2 = 'orange';
+        this.drawSpeed = 50;
+    }
+
+}
 
 //Javascript variables
 let currentPattern = [];
-let preDefinedDrawings = {
-    Smiley: [11, 12, 22, 21, 17, 27, 26, 16, 52, 62, 63, 64, 74, 75, 76, 77, 67, 57, 58],
-    Loop: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 89, 79, 69, 59, 49, 39, 29, 19, 9, 8, 7, 6, 5, 4, 3, 2, 1, 11, 21, 31, 41, 51, 61, 71, 81, 82, 83, 84, 85, 86, 87, 88, 78, 68, 58, 48, 38, 28, 18, 17, 16, 15, 14, 13, 12, 22, 32, 42, 52, 62, 72, 73, 74, 75, 76, 77, 67, 57, 47, 37, 27, 26, 25, 24, 23, 33, 43, 53, 63, 64, 65, 66, 56, 46, 36, 35, 34, 44, 54, 55, 45]
-}
 let drawingEnabled = true;
+const drawingController = new DrawingController();
+console.log(drawingController.gridWidth);
 
 
 //Misc Elems
@@ -60,31 +62,31 @@ function init(){
     resetBoardBtn.addEventListener('click', () => {
         const squares = document.querySelectorAll('.square');
         squares.forEach((square) => {
-            square.style.backgroundColor = color1; 
+            square.style.backgroundColor = drawingController.color1; 
         });
         const numbers = document.querySelectorAll('.number');
         numbers.forEach((square) => {
-            square.style.color = color1; 
+            square.style.color = drawingController.color1; 
         });
     });
  
     //Drawing Settings elems
 
     widthInput.addEventListener('change', (e) => {
-        gridWidth = e.target.value;
-        r.style.setProperty('--grid-width', gridWidth);
+        drawingController.gridWidth = e.target.value;
+        r.style.setProperty('--grid-width', drawingController.gridWidth);
         createSquares();
     });
 
     heightInput.addEventListener('change', (e) => {
-        gridHeight = e.target.value;
-        r.style.setProperty('--grid-height', gridHeight);
+        drawingController.gridHeight = e.target.value;
+        r.style.setProperty('--grid-height', drawingController.gridHeight);
         createSquares();
     });
 
     sizeInput.addEventListener('change', (e) => {
-        squareSize = e.target.value;
-        r.style.setProperty('--square-size', squareSize+"px");
+        drawingController.squareSize = e.target.value;
+        r.style.setProperty('--square-size', drawingController.squareSize+"px");
         createSquares();
     });
 
@@ -94,10 +96,10 @@ function init(){
             let childElem = square.children[0];
             if (e.target.checked) {
                 childElem.style.display = "inline";
-                showNumbers = true;
+                drawingController.showNumbers = true;
               } else {
                 childElem.style.display = "none";
-                showNumbers = false;
+                drawingController.showNumbers = false;
               }
         });
     });
@@ -124,16 +126,16 @@ function init(){
     });
 
     color1Input.addEventListener('change', (e) => {
-        color1 = e.target.value;
-        r.style.setProperty('--color1', color1);
+        drawingController.color1 = e.target.value;
+        r.style.setProperty('--color1', drawingController.color1);
     });
     color2Input.addEventListener('change', (e) => {
-        color2 = e.target.value;
-        r.style.setProperty('--color2', color2);
+        drawingController.color2 = e.target.value;
+        r.style.setProperty('--color2', drawingController.color2);
     });
 
     drawingTimeInput.addEventListener('change', (e) => {
-        drawSpeed = e.target.value;
+        drawingController.drawSpeed = e.target.value;
     });
 
     //Predefined Drawing elems
@@ -153,9 +155,6 @@ function init(){
     });
 
     //other
-
-   
-
     document.addEventListener('selectstart', (e) => {
         e.preventDefault(); // Prevents text selection
     });
@@ -167,13 +166,13 @@ function init(){
 init();
 function createSquares() {
     container.innerHTML = "";
-    const gridSize = gridHeight * gridWidth;
+    const gridSize = drawingController.gridHeight * drawingController.gridWidth;
     for (let i = 0; i < gridSize; i++) {
         const square = document.createElement('div');
         square.className = 'square';
         let squareNum = document.createElement('span');
         squareNum.innerHTML = i;
-        squareNum.style.display = showNumbers ? "inline" : "none";
+        squareNum.style.display = drawingController.showNumbers ? "inline" : "none";
         square.append(squareNum);
 
         container.appendChild(square);
@@ -188,22 +187,22 @@ function drawPattern(pattern, isTemporary, includeNumbers) {
     
 
     pattern.forEach((index, count) => {     
-        delay += (150 - drawSpeed); 
+        delay += (150 - drawingController.drawSpeed); 
         
         setTimeout(() => {
-            squares[index].style.backgroundColor = color2; 
+            squares[index].style.backgroundColor = drawingController.color2; 
             if(includeNumbers){
-                numbers[count].style.color = color2; 
+                numbers[count].style.color = drawingController.color2; 
             }
             
             
             if (isTemporary) {
                 setTimeout(() => {
-                    squares[index].style.backgroundColor = color1; 
+                    squares[index].style.backgroundColor = drawingController.color1; 
                     if(includeNumbers){
-                    numbers[count].style.color = color1; 
+                    numbers[count].style.color = drawingController.color1; 
                     }
-                }, transitionTime); 
+                }, drawingController.transitionTime); 
             }
         }, delay);
     });
@@ -211,7 +210,6 @@ function drawPattern(pattern, isTemporary, includeNumbers) {
 
 
 function dropDownLogic() {
-    const dropDownContainer = document.getElementById('dropDownContainer');
     
     const toggleDropdown = (btn, contentId) => {
         const content = document.getElementById(contentId);
@@ -250,7 +248,7 @@ function initDrawing() {
                 const square = e.target;
                 const index = Array.from(container.children).indexOf(square);
                 
-                square.style.backgroundColor = color2;
+                square.style.backgroundColor = drawingController.color2;
                 patternStringOutput.innerHTML += `<span class='number'>${index}, </span>`;
                 currentPattern.push(index);
 
@@ -260,11 +258,16 @@ function initDrawing() {
             if (!tempCB.checked) {
                 revertTimeout = setTimeout(() => {
                     changedSquares.forEach((s) => {
-                        s.style.backgroundColor = color1; 
+                        s.style.backgroundColor = drawingController.color1; 
                     });
                     changedSquares.clear(); 
-                }, transitionTime);
+                }, drawingController.transitionTime);
             }
         }
     });
 }
+
+
+
+
+
