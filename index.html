@@ -9,7 +9,7 @@
 
 <body>
   <div id="dropDownContainer">
-    <button id="settings1Btn">Main Buttons</button>
+    <button class="dropDownButton" id="settings1Btn">Main Buttons</button>
 
     <div id="settings1Div" class="dropDownDiv">
       
@@ -18,33 +18,39 @@
     <button id="resetBoardBtn">Reset Drawing</button>
 
   </div>
-  <button id="settings2Btn">Drawing Settings</button>
+  <button class="dropDownButton" id="settings2Btn">Drawing Settings</button>
 
   <div id="settings2Div" class="dropDownDiv">
     <label>Width</label>
-    <input value="10" id="widthInput" type="number">
+    <input value="20" id="widthInput" type="number">
     <br>
     <label>Height</label>
-    <input value="10" id="heightInput" type="number">
+    <input value="20" id="heightInput" type="number">
     <br>
     <label>Square Size</label>
-    <input id="sizeInput" value="80" type="number">
-    <br>
-    <label>Pause Drawing Keybind</label>
-    <input id="pauseKeybindInput" type="text" value="A">
+    <input id="sizeInput" value="40" type="number">
     <br>
     <label>Static drawing</label>
     <input id="tempCB" type="checkbox">
     <br>
-    <label>Hide Square Numbers</label>
+    <label>Show Square Numbers</label>
     <input id="showNumsCB" type="checkbox">
     <br>
     <label>Hold down mouse to draw</label>
     <input id="holdDrawCB" type="checkbox">
+    <br>
+    <label>Default Color</label>
+    <input id="color1Input" type="color">
+    <br>
+    <label>Drawing Color</label>
+    <input value="#FFA500" id="color2Input" type="color">
+    <br>
+    <label>Drawing Speed</label>
+    <input id="drawingTimeInput" type="range" min="1" max="100">
    
   </div>
 
-  <button id="settings3Btn">Pre-defined drawings</button>
+  <button class="dropDownButton" id="settings3Btn">Pre-defined drawings</button>
 
   <div id="settings3Div" class="dropDownDiv">
     <select id="drawingsSelect">
