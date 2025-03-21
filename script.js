@@ -35,17 +35,18 @@ const widthInput = document.getElementById('widthInput');
 const heightInput = document.getElementById('heightInput');
 const showNumsCB = document.getElementById('showNumsCB');
 const tempCB = document.getElementById('tempCB');
-const holdDrawCB = document.getElementById('holdDrawCB');
+//const holdDrawCB = document.getElementById('holdDrawCB');
 const color1Input = document.getElementById('color1Input');
 const color2Input = document.getElementById('color2Input');
 const drawingTimeInput = document.getElementById('drawingTimeInput');
 
+/*
 //Predefined Drawing elems
 const selectDrawBtn = document.getElementById('selectDrawBtn');
 const drawingsSelect = document.getElementById('drawingsSelect');
 const addCurrentBtn = document.getElementById('addCurrentBtn');
 const currentNameInput = document.getElementById('currentNameInput');
-
+*/
 
 function init(){
     //Main Buttons Elems
@@ -103,7 +104,7 @@ function init(){
               }
         });
     });
-
+/*
     const mouseDownHandler = (event) => {
         if (event.button === 0) {
             drawingEnabled = true;
@@ -124,7 +125,7 @@ function init(){
             document.removeEventListener('mouseup', mouseUpHandler);
         }
     });
-
+ */
     color1Input.addEventListener('change', (e) => {
         drawingController.color1 = e.target.value;
         r.style.setProperty('--color1', drawingController.color1);
@@ -138,6 +139,7 @@ function init(){
         drawingController.drawSpeed = e.target.value;
     });
 
+    /*
     //Predefined Drawing elems
     selectDrawBtn.addEventListener('click', () => {
         drawPattern(preDefinedDrawings[drawingsSelect.value], !tempCB.checked, false);
@@ -150,9 +152,9 @@ function init(){
             opt.innerHTML = currentNameInput.value;
             drawingsSelect.appendChild(opt);
 
-        }
-        
+        }  
     });
+    */
 
     //other
     document.addEventListener('selectstart', (e) => {
@@ -214,8 +216,9 @@ function dropDownLogic() {
     const toggleDropdown = (btn, contentId) => {
         const content = document.getElementById(contentId);
         
+
         // Close other dropdowns
-        const allDropdowns = ['settings1Div', 'settings2Div', 'settings3Div'];
+        const allDropdowns = ['settings1Div', 'settings2Div'/*, 'settings3Div'*/];
         allDropdowns.forEach((id) => {
             if (id !== contentId) {
                 document.getElementById(id).classList.remove('show');
@@ -232,8 +235,8 @@ function dropDownLogic() {
     const settings2Btn = document.getElementById('settings2Btn');
     settings2Btn.addEventListener('click', () => toggleDropdown(settings2Btn, 'settings2Div'));
     
-    const settings3Btn = document.getElementById('settings3Btn');
-    settings3Btn.addEventListener('click', () => toggleDropdown(settings3Btn, 'settings3Div'));
+    /*const settings3Btn = document.getElementById('settings3Btn');
+    settings3Btn.addEventListener('click', () => toggleDropdown(settings3Btn, 'settings3Div')); */
 }
 
 function initDrawing() {
