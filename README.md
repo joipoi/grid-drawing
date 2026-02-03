@@ -1,6 +1,9 @@
 # Description
+
 This is a fun little game thing where there is a grid of html squares and you can change their color by moving your mouse across them.
 This lets you kinda draw images.
+
+[TRY IT HERE](https://joipoi.github.io/games/grid-drawing/index.html)
 
 ![preview](preview.png "preview")
 
